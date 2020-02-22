@@ -29,7 +29,9 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad:function () {
+        
+    },
 
     start () {
 

@@ -32,7 +32,6 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad:function () {
-        
     },
 
     start:function () {
@@ -42,4 +41,7 @@ cc.Class({
     update:function (dt) {
 
     },
+    gotopage:function(){
+        cc.director.loadScene("log");
+    }
 });
