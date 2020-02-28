@@ -32,6 +32,14 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad:function () {
+        var animation = this.getComponent(cc.Animation)
+        animation.play('homepage_titleplane') // 直接播放动画
+        // 动态加载动画
+        cc.loader.loadRes('action/homepage_titleplane.anim', cc.AnimationClip, function (err, dynamicAnimationClip) {
+            // 先将动态加载的clip放入animation中
+            animation.addClip(dynamicAnimationClip)
+            animation.run('homepage_titleplane')
+        })
     },
 
     start:function () {
@@ -41,7 +49,13 @@ cc.Class({
     update:function (dt) {
 
     },
-    gotopage:function(){
-        cc.director.loadScene("log");
+    new_game:function(){
+        cc.director.loadScene("new_user");
+    },
+    loading_game:function(){
+        cc.director.loadScene("game");
+    },
+    setting:function(){
+        
     }
 });
