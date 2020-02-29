@@ -16,6 +16,7 @@
 - note(about animation):
     one animation clip file only can write one animation process(if many processes in the same time they can be wrote in the same animation file);
     if we want to control the animation in the script:
+    
         properties: {
             a:{
                 type:cc.Node,
