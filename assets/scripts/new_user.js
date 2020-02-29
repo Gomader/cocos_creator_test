@@ -24,15 +24,13 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        controlpage:{
-            type:cc.Node,
-            default:null
-        }
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        this.node.opacity = 0;
+        this.node.runAction(cc.sequence(cc.fadeIn(1.0),cc.callFunc(this.testfun,this)));
     },
 
     start () {
@@ -40,15 +38,8 @@ cc.Class({
     },
 
     // update (dt) {},
-    showthepage:function(){
-        var anim = this.controlpage.getComponent(cc.Animation);
-        anim.play('showpage');
-        this.controlpage.active = true;
-    },
 
-    hidepage:function(){
-        var anim = this.controlpage.getComponent(cc.Animation);
-        anim.play('hidepage');
-        
+    testfun:function(){
+        console.log(1);
     }
 });

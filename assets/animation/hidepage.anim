@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "hidepage",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": 670.31
+        },
+        {
+          "frame": 0.25,
+          "value": 1113.6645
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 1557.019
+        },
+        {
+          "frame": 0.5,
+          "value": 3008.478
+        }
+      ]
+    }
+  },
+  "events": []
+}

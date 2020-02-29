@@ -27,6 +27,7 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -41,10 +42,15 @@ cc.Class({
     update:function (dt) {
 
     },
+
     new_game:function(){
-        cc.director.loadScene("new_user");
+        this.node.runAction(cc.sequence(cc.fadeOut(1.0),cc.callFunc(this.gotonew,this)));
     },
     loading_game:function(){
         cc.director.loadScene("game");
     },
+
+    gotonew:function(){
+        cc.director.loadScene("new_user");
+    }
 });
