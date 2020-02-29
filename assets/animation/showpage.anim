@@ -1,0 +1,33 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "showpage",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6666666666666666,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": -2595.838
+        },
+        {
+          "frame": 0.25,
+          "value": -1578.001
+        },
+        {
+          "frame": 0.5,
+          "value": -662.142
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": 5.2
+        }
+      ]
+    }
+  },
+  "events": []
+}
