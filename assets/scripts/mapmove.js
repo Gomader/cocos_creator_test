@@ -27,7 +27,7 @@ cc.Class({
         allmap:{
             type:cc.Node,
             default:null
-        }
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,9 +35,6 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        let windowSize=cc.view.getVisibleSize();
-        let minScale = Math.ceil(windowSize.height/2048);
-        var self = this.allmap, parent = this.node.parent;
         this.allmap.on(cc.Node.EventType.TOUCH_MOVE, event => {
             var touches = event.getTouches();
             if(touches.length == 1){
@@ -51,12 +48,26 @@ cc.Class({
             }else if(touches.length == 2){
                 var touch1 = touches[0], touch2 = touches[1];
                 var delta1 = touch1.getDelta(), delta2 = touch2.getDelta();
-                //坐标转换为map坐标系
-                var touchPoint1 = parent.convertToNodeSpaceAR(touch1.getLocation());
-                var touchPoint2 = parent.convertToNodeSpaceAR(touch2.getLocation());
-
-                //记录当前锚点
-                let anchorPoint_before = self.target.node.getAnchorPoint();
+                var touchpoint1 = this.allmap.convertToNodeSpaceAR(touch1.getLocation());
+                var touchpoint2 = this.allmap.convertToNodeSpaceAR(touch2.getLocation());
+                var distance = touchpoint1.sub(touchpoint2);
+                var delta = delta1.sub(cc.v2(delta2.x,delta2.y));
+                var pos = touchpoint2.add(cc.v2(distance.x / 2, distance.y / 2));
+                pos = this.allmap.convertToWorldSpaceAR(pos);
+                var scale = 1;
+                if(Math.abs(distance.x)>Math.abs(distance.y)){
+                    scale = (distance.x + delta.x) / distance.x * this.allmap.scaleX;
+                }else{
+                    scale = (distance.y + delta.y) / distance.y * this.allmap.scaleY;
+                }
+                if(scale>6){
+                    scale = 6;
+                }else if(scale<1){
+                    scale = 1;
+                }
+                var size = this.allmap.getContentSize();
+                this.allmap.setAnchorPoint(pos.x/size.width,pos.y/size.height);
+                this.allmap.setScale(scale);
             }
             
         }, this)
