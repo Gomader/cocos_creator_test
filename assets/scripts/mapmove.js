@@ -52,8 +52,6 @@ cc.Class({
                 var touchpoint2 = this.allmap.convertToNodeSpaceAR(touch2.getLocation());
                 var distance = touchpoint1.sub(touchpoint2);
                 var delta = delta1.sub(cc.v2(delta2.x,delta2.y));
-                var pos = touchpoint2.add(cc.v2(distance.x / 2, distance.y / 2));
-                pos = this.allmap.convertToWorldSpaceAR(pos);
                 var scale = 1;
                 if(Math.abs(distance.x)>Math.abs(distance.y)){
                     scale = (distance.x + delta.x) / distance.x * this.allmap.scaleX;
@@ -65,8 +63,6 @@ cc.Class({
                 }else if(scale<1){
                     scale = 1;
                 }
-                var size = this.allmap.getContentSize();
-                this.allmap.setAnchorPoint(pos.x/size.width,pos.y/size.height);
                 this.allmap.setScale(scale);
             }
             
