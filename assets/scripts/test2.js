@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+var global = require('Global');
+
 cc.Class({
     extends: cc.Component,
 
@@ -24,15 +26,24 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        a:cc.Integer
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-    },
+    // onLoad () {},
 
     start () {
 
     },
+
+    // update (dt) {},
+    test:function(event, customEventData){
+        console.log("a");
+        console.log(customEventData);
+    },
+    callback: function (event, customEventData) {
+        //这里的 customEventData 参数就等于你之前设置的 "foobar"
+        console.log("para is: ",customEventData);
+    },
+
 });

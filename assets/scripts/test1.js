@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+var global = require('Global');
+
 cc.Class({
     extends: cc.Component,
 
@@ -24,15 +26,36 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        a:cc.Integer
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
+    
+    onLoad: function () {
+        var clickEventHandler = new cc.Component.EventHandler();
+        clickEventHandler.target = this.node; //这个node节点是你的事件处理代码组件所属的节点
+        clickEventHandler.component = "test2";//这个是代码文件名
+        clickEventHandler.handler = "callback";
+        clickEventHandler.customEventData = {"name":"abc","id":123};
+    
+        var button = this.node.getComponent(cc.Button);
+        button.clickEvents.push(clickEventHandler);
+    },
+    
+    callback: function (event, customEventData) {
+        //这里的 customEventData 参数就等于你之前设置的 "foobar"
+        console.log("para is: ",customEventData);
     },
 
     start () {
 
     },
+
+    update (dt) {
+
+    },
+    test:function(event, customEventData){
+        console("acb")
+    }
 });

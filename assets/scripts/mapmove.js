@@ -32,7 +32,28 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        var userData = {
+            id : new Date().getTime(), 
+            name : 'abc',
+            stars : 0,
+            money : 0,
+            clean : 100,
+            airplane : {
+                a:1,
+                v:2
+            },
+            uprunway : 1,
+            downrunway : 1,
+            stand : 1,
+            control_tower : 0,
+            ground_tower : 1,
+            repair_center : 0,
+            terminal : 1,
+            fuel_station : 0
+        };
+        console.log(userData);
+    },
 
     start () {
         this.allmap.on(cc.Node.EventType.TOUCH_MOVE, event => {
